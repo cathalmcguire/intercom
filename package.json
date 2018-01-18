@@ -5,7 +5,7 @@
   "main": "Customer.js",
   "scripts": {
     "test": "jest --coverage",
-    "start": "node run.js"
+    "start": "node src/run.js"
   },
   "repository": {
     "type": "git",
