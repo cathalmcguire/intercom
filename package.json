@@ -1,0 +1,23 @@
+{
+  "name": "intercom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Customer.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node run.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmcguire79/intercom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmcguire79/intercom/issues"
+  },
+  "homepage": "https://github.com/cmcguire79/intercom#readme",
+  "devDependencies": {
+    "jest": "^22.1.2"
+  }
+}

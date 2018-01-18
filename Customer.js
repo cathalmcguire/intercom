@@ -1,7 +1,11 @@
 const Location = require('./Location');
+const InvalidClassInitialisationError = require('./InvalidClassInitialisationError');
 
 class Customer {
   constructor(id, name) {
+    if (!id || !name) {
+      throw new InvalidClassInitialisationError();
+    }
     this.id = id;
     this.name = name;
   }

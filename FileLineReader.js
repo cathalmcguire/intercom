@@ -1,8 +1,12 @@
 const fs = require('fs');
 const readline = require('readline');
+const InvalidClassInitialisationError = require('./InvalidClassInitialisationError');
 
 class FileLineReader {
   constructor(filename) {
+    if (!filename) {
+      throw new InvalidClassInitialisationError();
+    }
     this.reader = readline.createInterface({
       input: fs.createReadStream(filename)
     });
@@ -12,7 +16,7 @@ class FileLineReader {
     this.reader.on('line', onLine);
   }
 
-  setOnclose(onClose) {
+  setOnClose(onClose) {
     this.reader.on('close', onClose);
   }
 }

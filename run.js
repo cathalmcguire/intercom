@@ -4,12 +4,9 @@ const Location = require('./Location');
 const IntercomOffice = require('./IntercomOffice');
 const FileLineReader = require('./FileLineReader');
 
-
 const filename = 'output.txt'
 const customers = {};
-
 const intercom = new IntercomOffice(53.339428, -6.257664);
-
 const fileLineReader = new FileLineReader('customers.json');
 
 fileLineReader.setOnLine(line => {
@@ -21,9 +18,10 @@ fileLineReader.setOnLine(line => {
   }
 });
 
-fileLineReader.setOnclose(() => {
+fileLineReader.setOnClose(() => {
   const logger = fs.createWriteStream(filename);
   Object.keys(customers).forEach(key => {
     logger.write(customers[key].toString());
   });
 });
+
