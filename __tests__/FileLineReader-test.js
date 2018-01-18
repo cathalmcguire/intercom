@@ -1,5 +1,5 @@
 const FileLineReader = require('../FileLineReader');
-const InvalidClassInitialisationError = require('../InvalidClassInitialisationError');
+const { InvalidFilenameError } = require('../Errors');
 
 let mockReader = 'test reader';
 
@@ -19,7 +19,7 @@ describe('FileLineReader', () => {
       new FileLineReader();
       expect(true).toEqual(false);
     } catch(error) {
-      expect(error.constructor.name).toEqual('InvalidClassInitialisationError');
+      expect(error.constructor.name).toEqual('InvalidFilenameError');
     }
   });
 

@@ -1,5 +1,5 @@
 const Customer = require('../Customer');
-const InvalidClassInitialisationError = require('../InvalidClassInitialisationError');
+const { InvalidCustomerDetailsError } = require('../Errors');
 
 describe('Customer', () => {
   it('initialises with id and name', () => {
@@ -8,19 +8,19 @@ describe('Customer', () => {
     expect(customer.name).toEqual('Phil Mitchell');
   });
 
-  it('throws an initialisation error if instaniated with bad arguments', () => {
+  it('throws an error if instaniated with bad arguments', () => {
     try {
       new Customer(1);
       expect(true).toEqual(false);
     } catch(error) {
-      expect(error.constructor.name).toEqual('InvalidClassInitialisationError');
+      expect(error.constructor.name).toEqual('InvalidCustomerDetailsError');
     }
 
     try {
       new Customer(undefined, 'Phil Mitchell');
       expect(true).toEqual(false);
     } catch(error) {
-      expect(error.constructor.name).toEqual('InvalidClassInitialisationError');
+      expect(error.constructor.name).toEqual('InvalidCustomerDetailsError');
     }
   });
 

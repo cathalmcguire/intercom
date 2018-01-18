@@ -1,17 +1,17 @@
 const Location = require('./Location');
-const InvalidClassInitialisationError = require('./InvalidClassInitialisationError');
+const { InvalidCatchmentAreaError } = require('./Errors');
 
-class IntercomOffice {
+class IntercomOffice extends Location{
   constructor(latitude, longitude, catchmentArea = 100) {
     if (typeof catchmentArea !== 'number') {
-      throw new InvalidClassInitialisationError();
+      throw new InvalidCatchmentAreaError();
     }
-    this.location = new Location(latitude, longitude);
+    super(latitude, longitude);
     this.catchmentArea = catchmentArea;
   }
 
   locationIsWithinCatchment(location) {
-    return this.location.getDistanceFromLocation(location) <= this.catchmentArea;
+    return this.getDistanceFromLocation(location) <= this.catchmentArea;
   }
 }
 

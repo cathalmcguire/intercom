@@ -21,5 +21,5 @@ npm test
 Another approach would be to think of a solution for big data. The provided customers file has 32 entries but the solution I've provided would be inefficient for a million. To solve for big data I would:
 
 * Read on a per line basis. If the line meets the distance criteria write to an output file
-* Read in data from the diltered output in chunks. Sort the data and write to temporary files
+* Read in data from the filtered output in chunks. Sort the data and write to temporary files
 * Use an external merge sort to sort the data from the temporary files into a single final sorted file. 

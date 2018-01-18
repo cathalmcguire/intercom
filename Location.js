@@ -1,11 +1,11 @@
-const InvalidClassInitialisationError = require('./InvalidClassInitialisationError');
+const { InvalidCoordinatesError } = require('./Errors');
 const { PI, cos, asin, sqrt } = Math;
 const radianConvertor = PI / 180;
 
 class Location {
   constructor(latitude, longitude) {
     if (!latitude || !longitude) {
-      throw new InvalidClassInitialisationError();
+      throw new InvalidCoordinatesError();
     }
     this.latitude = parseFloat(latitude);
     this.longitude = parseFloat(longitude);

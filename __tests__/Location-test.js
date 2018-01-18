@@ -1,5 +1,5 @@
 const Location = require('../Location');
-const InvalidClassInitialisationError = require('../InvalidClassInitialisationError');
+const { InvalidCoordinatesError } = require('../Errors');
 
 describe('Location', () => {
   it('initialises with latitude and longitude', () => {
@@ -8,19 +8,19 @@ describe('Location', () => {
     expect(location.longitude).toEqual(-6.257664);
   });
 
-  it('throws an initialisation error if instaniated with bad arguments', () => {
+  it('throws an error if instaniated with bad arguments', () => {
     try {
       new Location(53.339428);
       expect(true).toEqual(false);
     } catch(error) {
-      expect(error.constructor.name).toEqual('InvalidClassInitialisationError');
+      expect(error.constructor.name).toEqual('InvalidCoordinatesError');
     }
 
     try {
       new Location(null, '-6.257664');
       expect(true).toEqual(false);
     } catch(error) {
-      expect(error.constructor.name).toEqual('InvalidClassInitialisationError');
+      expect(error.constructor.name).toEqual('InvalidCoordinatesError');
     }
   });
 

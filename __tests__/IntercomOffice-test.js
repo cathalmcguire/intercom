@@ -1,11 +1,12 @@
 const IntercomOffice = require('../IntercomOffice');
 const Location = require('../Location');
-const InvalidClassInitialisationError = require('../InvalidClassInitialisationError');
+const { InvalidCatchmentAreaError } = require('../Errors');
 
 describe('IntercomOffice', () => {
   it('initialises with location coordinates and catchment area', () => {
     const intercomOffice = new IntercomOffice(53.339428, -6.257664, 50);
-    expect(intercomOffice.location.constructor.name).toEqual('Location');
+    expect(intercomOffice.latitude).toEqual(53.339428);
+    expect(intercomOffice.longitude).toEqual(-6.257664);
     expect(intercomOffice.catchmentArea).toEqual(50);
   });
 
@@ -16,10 +17,10 @@ describe('IntercomOffice', () => {
 
   it('throws an initialisation error if instaniated with bad arguments', () => {
     try {
-      new IntercomOffice();
+      new IntercomOffice(53.339428, -6.257664, null);
       expect(true).toEqual(false);
     } catch(error) {
-      expect(error.constructor.name).toEqual('InvalidClassInitialisationError');
+      expect(error.constructor.name).toEqual('InvalidCatchmentAreaError');
     }
   });
 
